@@ -112,16 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				71A463F125AE8DE9008403C1 /* Models */,
-				71A463B525AE8B78008403C1 /* AppDelegate.h */,
-				71A463B625AE8B78008403C1 /* AppDelegate.m */,
-				71A463B825AE8B78008403C1 /* SceneDelegate.h */,
-				71A463B925AE8B78008403C1 /* SceneDelegate.m */,
 				71A463BB25AE8B78008403C1 /* ViewController.h */,
 				71A463BC25AE8B78008403C1 /* ViewController.m */,
-				71A463C125AE8B79008403C1 /* Assets.xcassets */,
-				71A463C325AE8B79008403C1 /* LaunchScreen.storyboard */,
-				71A463C625AE8B79008403C1 /* Info.plist */,
-				71A463C725AE8B79008403C1 /* main.m */,
+				71A4640725AE9028008403C1 /* Support Files */,
 			);
 			path = MyAviasails;
 			sourceTree = "<group>";
@@ -155,6 +148,21 @@
 				71A4640225AE8F53008403C1 /* City.m */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		71A4640725AE9028008403C1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				71A463C125AE8B79008403C1 /* Assets.xcassets */,
+				71A463C325AE8B79008403C1 /* LaunchScreen.storyboard */,
+				71A463B525AE8B78008403C1 /* AppDelegate.h */,
+				71A463B625AE8B78008403C1 /* AppDelegate.m */,
+				71A463B825AE8B78008403C1 /* SceneDelegate.h */,
+				71A463B925AE8B78008403C1 /* SceneDelegate.m */,
+				71A463C625AE8B79008403C1 /* Info.plist */,
+				71A463C725AE8B79008403C1 /* main.m */,
+			);
+			path = "Support Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,7 +465,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QU9ZBG8S59;
-				INFOPLIST_FILE = MyAviasails/Info.plist;
+				INFOPLIST_FILE = "MyAviasails/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -475,7 +483,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QU9ZBG8S59;
-				INFOPLIST_FILE = MyAviasails/Info.plist;
+				INFOPLIST_FILE = "MyAviasails/Support Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
