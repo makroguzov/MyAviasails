@@ -15,6 +15,9 @@
 		71A463C825AE8B79008403C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463C725AE8B79008403C1 /* main.m */; };
 		71A463D225AE8B79008403C1 /* MyAviasailsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463D125AE8B79008403C1 /* MyAviasailsTests.m */; };
 		71A463DD25AE8B79008403C1 /* MyAviasailsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463DC25AE8B79008403C1 /* MyAviasailsUITests.m */; };
+		71A463F425AE8E0C008403C1 /* Airport.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463F325AE8E0C008403C1 /* Airport.m */; };
+		71A463FD25AE8E93008403C1 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463FC25AE8E93008403C1 /* Country.m */; };
+		71A4640325AE8F53008403C1 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A4640225AE8F53008403C1 /* City.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +55,12 @@
 		71A463D825AE8B79008403C1 /* MyAviasailsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyAviasailsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		71A463DC25AE8B79008403C1 /* MyAviasailsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyAviasailsUITests.m; sourceTree = "<group>"; };
 		71A463DE25AE8B79008403C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		71A463F225AE8E0C008403C1 /* Airport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Airport.h; sourceTree = "<group>"; };
+		71A463F325AE8E0C008403C1 /* Airport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Airport.m; sourceTree = "<group>"; };
+		71A463FB25AE8E93008403C1 /* Country.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Country.h; sourceTree = "<group>"; };
+		71A463FC25AE8E93008403C1 /* Country.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
+		71A4640125AE8F53008403C1 /* City.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
+		71A4640225AE8F53008403C1 /* City.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +111,7 @@
 		71A463B425AE8B78008403C1 /* MyAviasails */ = {
 			isa = PBXGroup;
 			children = (
+				71A463F125AE8DE9008403C1 /* Models */,
 				71A463B525AE8B78008403C1 /* AppDelegate.h */,
 				71A463B625AE8B78008403C1 /* AppDelegate.m */,
 				71A463B825AE8B78008403C1 /* SceneDelegate.h */,
@@ -132,6 +142,19 @@
 				71A463DE25AE8B79008403C1 /* Info.plist */,
 			);
 			path = MyAviasailsUITests;
+			sourceTree = "<group>";
+		};
+		71A463F125AE8DE9008403C1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				71A463F225AE8E0C008403C1 /* Airport.h */,
+				71A463F325AE8E0C008403C1 /* Airport.m */,
+				71A463FB25AE8E93008403C1 /* Country.h */,
+				71A463FC25AE8E93008403C1 /* Country.m */,
+				71A4640125AE8F53008403C1 /* City.h */,
+				71A4640225AE8F53008403C1 /* City.m */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -263,8 +286,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				71A463BD25AE8B78008403C1 /* ViewController.m in Sources */,
+				71A463F425AE8E0C008403C1 /* Airport.m in Sources */,
 				71A463B725AE8B78008403C1 /* AppDelegate.m in Sources */,
 				71A463C825AE8B79008403C1 /* main.m in Sources */,
+				71A463FD25AE8E93008403C1 /* Country.m in Sources */,
+				71A4640325AE8F53008403C1 /* City.m in Sources */,
 				71A463BA25AE8B78008403C1 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
