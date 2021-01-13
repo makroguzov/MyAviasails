@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		71A463B725AE8B78008403C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463B625AE8B78008403C1 /* AppDelegate.m */; };
 		71A463BA25AE8B78008403C1 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463B925AE8B78008403C1 /* SceneDelegate.m */; };
-		71A463BD25AE8B78008403C1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463BC25AE8B78008403C1 /* ViewController.m */; };
+		71A463BD25AE8B78008403C1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463BC25AE8B78008403C1 /* MainViewController.m */; };
 		71A463C225AE8B79008403C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 71A463C125AE8B79008403C1 /* Assets.xcassets */; };
 		71A463C525AE8B79008403C1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 71A463C325AE8B79008403C1 /* LaunchScreen.storyboard */; };
 		71A463C825AE8B79008403C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463C725AE8B79008403C1 /* main.m */; };
@@ -43,8 +43,8 @@
 		71A463B625AE8B78008403C1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		71A463B825AE8B78008403C1 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		71A463B925AE8B78008403C1 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
-		71A463BB25AE8B78008403C1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		71A463BC25AE8B78008403C1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		71A463BB25AE8B78008403C1 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		71A463BC25AE8B78008403C1 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		71A463C125AE8B79008403C1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		71A463C425AE8B79008403C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		71A463C625AE8B79008403C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -112,8 +112,8 @@
 			isa = PBXGroup;
 			children = (
 				71A463F125AE8DE9008403C1 /* Models */,
-				71A463BB25AE8B78008403C1 /* ViewController.h */,
-				71A463BC25AE8B78008403C1 /* ViewController.m */,
+				71A463BB25AE8B78008403C1 /* MainViewController.h */,
+				71A463BC25AE8B78008403C1 /* MainViewController.m */,
 				71A4640725AE9028008403C1 /* Support Files */,
 			);
 			path = MyAviasails;
@@ -293,7 +293,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71A463BD25AE8B78008403C1 /* ViewController.m in Sources */,
+				71A463BD25AE8B78008403C1 /* MainViewController.m in Sources */,
 				71A463F425AE8E0C008403C1 /* Airport.m in Sources */,
 				71A463B725AE8B78008403C1 /* AppDelegate.m in Sources */,
 				71A463C825AE8B79008403C1 /* main.m in Sources */,

@@ -1,17 +1,17 @@
 //
-//  ViewController.m
+//  MainViewController.m
 //  MyAviasails
 //
 //  Created by Валерий Макрогузов on 13.01.2021.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
 
-@interface ViewController ()
+@interface MainViewController ()
 
 @end
 
-@implementation ViewController
+@implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
