@@ -18,6 +18,9 @@
 		71A463F425AE8E0C008403C1 /* Airport.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463F325AE8E0C008403C1 /* Airport.m */; };
 		71A463FD25AE8E93008403C1 /* Country.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463FC25AE8E93008403C1 /* Country.m */; };
 		71A4640325AE8F53008403C1 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A4640225AE8F53008403C1 /* City.m */; };
+		71F633ED25AEB0EB00BC8CE3 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 71F633EA25AEB0EA00BC8CE3 /* countries.json */; };
+		71F633EE25AEB0EB00BC8CE3 /* airports.json in Resources */ = {isa = PBXBuildFile; fileRef = 71F633EB25AEB0EA00BC8CE3 /* airports.json */; };
+		71F633EF25AEB0EB00BC8CE3 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 71F633EC25AEB0EB00BC8CE3 /* cities.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +64,9 @@
 		71A463FC25AE8E93008403C1 /* Country.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Country.m; sourceTree = "<group>"; };
 		71A4640125AE8F53008403C1 /* City.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = City.h; sourceTree = "<group>"; };
 		71A4640225AE8F53008403C1 /* City.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = City.m; sourceTree = "<group>"; };
+		71F633EA25AEB0EA00BC8CE3 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
+		71F633EB25AEB0EA00BC8CE3 /* airports.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = airports.json; sourceTree = "<group>"; };
+		71F633EC25AEB0EB00BC8CE3 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7137105D25AEB05B000199EE /* jsons */ = {
+			isa = PBXGroup;
+			children = (
+				71F633EB25AEB0EA00BC8CE3 /* airports.json */,
+				71F633EC25AEB0EB00BC8CE3 /* cities.json */,
+				71F633EA25AEB0EA00BC8CE3 /* countries.json */,
+			);
+			path = jsons;
+			sourceTree = "<group>";
+		};
 		71A463A925AE8B78008403C1 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +127,7 @@
 		71A463B425AE8B78008403C1 /* MyAviasails */ = {
 			isa = PBXGroup;
 			children = (
+				7137105D25AEB05B000199EE /* jsons */,
 				71A463F125AE8DE9008403C1 /* Models */,
 				71A463BB25AE8B78008403C1 /* MainViewController.h */,
 				71A463BC25AE8B78008403C1 /* MainViewController.m */,
@@ -267,6 +284,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				71F633ED25AEB0EB00BC8CE3 /* countries.json in Resources */,
+				71F633EF25AEB0EB00BC8CE3 /* cities.json in Resources */,
+				71F633EE25AEB0EB00BC8CE3 /* airports.json in Resources */,
 				71A463C525AE8B79008403C1 /* LaunchScreen.storyboard in Resources */,
 				71A463C225AE8B79008403C1 /* Assets.xcassets in Resources */,
 			);
