@@ -104,6 +104,13 @@
 			path = jsons;
 			sourceTree = "<group>";
 		};
+		7163A6C025B2DCF2004CE8DE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		71A463A925AE8B78008403C1 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +136,7 @@
 			children = (
 				7137105D25AEB05B000199EE /* jsons */,
 				71A463F125AE8DE9008403C1 /* Models */,
+				7163A6C025B2DCF2004CE8DE /* Controllers */,
 				71A463BB25AE8B78008403C1 /* MainViewController.h */,
 				71A463BC25AE8B78008403C1 /* MainViewController.m */,
 				71A4640725AE9028008403C1 /* Support Files */,
@@ -417,7 +425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -470,7 +478,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
