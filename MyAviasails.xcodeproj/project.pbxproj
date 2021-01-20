@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		713E235225B34BB4007FA37F /* ChooseAirportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 713E235125B34BB4007FA37F /* ChooseAirportViewController.m */; };
+		715E082125B35EDE0099733C /* AirportTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 715E082025B35EDE0099733C /* AirportTableViewCell.m */; };
+		715E083525B58B510099733C /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 715E083425B58B510099733C /* DataManager.m */; };
 		71A463B725AE8B78008403C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463B625AE8B78008403C1 /* AppDelegate.m */; };
 		71A463BA25AE8B78008403C1 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463B925AE8B78008403C1 /* SceneDelegate.m */; };
 		71A463BD25AE8B78008403C1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463BC25AE8B78008403C1 /* MainViewController.m */; };
@@ -41,6 +44,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		713E235025B34BB4007FA37F /* ChooseAirportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseAirportViewController.h; sourceTree = "<group>"; };
+		713E235125B34BB4007FA37F /* ChooseAirportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseAirportViewController.m; sourceTree = "<group>"; };
+		715E081F25B35EDE0099733C /* AirportTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AirportTableViewCell.h; sourceTree = "<group>"; };
+		715E082025B35EDE0099733C /* AirportTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AirportTableViewCell.m; sourceTree = "<group>"; };
+		715E083325B58B510099733C /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
+		715E083425B58B510099733C /* DataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
 		71A463B225AE8B78008403C1 /* MyAviasails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyAviasails.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		71A463B525AE8B78008403C1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		71A463B625AE8B78008403C1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -104,9 +113,28 @@
 			path = jsons;
 			sourceTree = "<group>";
 		};
+		715E083225B58B320099733C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				71A463F225AE8E0C008403C1 /* Airport.h */,
+				71A463F325AE8E0C008403C1 /* Airport.m */,
+				71A463FB25AE8E93008403C1 /* Country.h */,
+				71A463FC25AE8E93008403C1 /* Country.m */,
+				71A4640125AE8F53008403C1 /* City.h */,
+				71A4640225AE8F53008403C1 /* City.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		7163A6C025B2DCF2004CE8DE /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				71A463BB25AE8B78008403C1 /* MainViewController.h */,
+				71A463BC25AE8B78008403C1 /* MainViewController.m */,
+				713E235025B34BB4007FA37F /* ChooseAirportViewController.h */,
+				713E235125B34BB4007FA37F /* ChooseAirportViewController.m */,
+				715E081F25B35EDE0099733C /* AirportTableViewCell.h */,
+				715E082025B35EDE0099733C /* AirportTableViewCell.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -135,10 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				7137105D25AEB05B000199EE /* jsons */,
-				71A463F125AE8DE9008403C1 /* Models */,
+				71A463F125AE8DE9008403C1 /* Network */,
 				7163A6C025B2DCF2004CE8DE /* Controllers */,
-				71A463BB25AE8B78008403C1 /* MainViewController.h */,
-				71A463BC25AE8B78008403C1 /* MainViewController.m */,
 				71A4640725AE9028008403C1 /* Support Files */,
 			);
 			path = MyAviasails;
@@ -162,17 +188,14 @@
 			path = MyAviasailsUITests;
 			sourceTree = "<group>";
 		};
-		71A463F125AE8DE9008403C1 /* Models */ = {
+		71A463F125AE8DE9008403C1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				71A463F225AE8E0C008403C1 /* Airport.h */,
-				71A463F325AE8E0C008403C1 /* Airport.m */,
-				71A463FB25AE8E93008403C1 /* Country.h */,
-				71A463FC25AE8E93008403C1 /* Country.m */,
-				71A4640125AE8F53008403C1 /* City.h */,
-				71A4640225AE8F53008403C1 /* City.m */,
+				715E083225B58B320099733C /* Models */,
+				715E083325B58B510099733C /* DataManager.h */,
+				715E083425B58B510099733C /* DataManager.m */,
 			);
-			path = Models;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		71A4640725AE9028008403C1 /* Support Files */ = {
@@ -322,10 +345,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				71A463BD25AE8B78008403C1 /* MainViewController.m in Sources */,
+				713E235225B34BB4007FA37F /* ChooseAirportViewController.m in Sources */,
+				715E083525B58B510099733C /* DataManager.m in Sources */,
 				71A463F425AE8E0C008403C1 /* Airport.m in Sources */,
 				71A463B725AE8B78008403C1 /* AppDelegate.m in Sources */,
 				71A463C825AE8B79008403C1 /* main.m in Sources */,
 				71A463FD25AE8E93008403C1 /* Country.m in Sources */,
+				715E082125B35EDE0099733C /* AirportTableViewCell.m in Sources */,
 				71A4640325AE8F53008403C1 /* City.m in Sources */,
 				71A463BA25AE8B78008403C1 /* SceneDelegate.m in Sources */,
 			);
