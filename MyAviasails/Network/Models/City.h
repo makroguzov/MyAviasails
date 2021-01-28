@@ -19,7 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString *code;
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary; 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
 @end
 NS_ASSUME_NONNULL_END
