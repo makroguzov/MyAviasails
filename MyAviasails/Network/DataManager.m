@@ -20,18 +20,17 @@
 
 @implementation DataManager
 
-+ (instancetype)sharedInstance
-{
++ (instancetype)sharedInstance {
     static DataManager *instance;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         instance = [[DataManager alloc] init];
     });
+    
     return instance;
 }
 
-- (void)loadData:(void (^)(void))complition
-{
+- (void)loadData:(void (^)(void))complition {
     if (![self isExistData]) {
         [self loadNewData:complition];
     } else {

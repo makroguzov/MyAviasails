@@ -28,8 +28,17 @@
 }
 
 - (void)setUpWithAirport:(Airport *)airport {
-    self.textLabel.text = airport.code;
-    self.detailTextLabel.text = [[airport.name stringByAppendingString:@", "] stringByAppendingString:airport.countryCode];
+    self.textLabel.text = [[airport.name stringByAppendingString:@", "] stringByAppendingString:airport.countryCode];
+
+    UILabel *airportCodeLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    airportCodeLable.attributedText = [[NSAttributedString alloc] initWithString:airport.code
+                                                               attributes: @{
+                                                                   NSForegroundColorAttributeName:[UIColor whiteColor],
+                                                                   NSFontAttributeName:[UIFont systemFontOfSize:20]
+                                                               }];
+
+    [self setAccessoryType:UITableViewCellAccessoryNone];
+    [self setAccessoryView:airportCodeLable];
 }
 
 @end
