@@ -37,6 +37,8 @@
     return self;
 }
 
+// MARK:- Life cycle
+
 - (void)viewDidLoad {
     [super viewDidLoad];
         
@@ -52,6 +54,7 @@
     self.navigationController.navigationBar.prefersLargeTitles = NO;
 }
 
+// MARK:- Set up UI
 
 - (void)setUpUI {
     [self setUpTableView];
@@ -80,7 +83,7 @@
     searchController.searchResultsUpdater = self;
     searchController.obscuresBackgroundDuringPresentation = NO;
     searchController.searchBar.placeholder = @"search ...";
-    searchController.searchBar.hidden = NO;
+    //searchController.searchBar.hidden = NO;
     
     self.searchController = searchController;
     
@@ -100,6 +103,8 @@
     [self.view addSubview:self.tableView];
 }
 
+// MARK:- Network
+
 - (void)loadData {
     [DataManager.sharedInstance loadData:^{
         NSArray *airports = [DataManager.sharedInstance airports];
@@ -108,6 +113,8 @@
     }];
     
 }
+
+// MARK:- UITableViewDataSource
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
@@ -137,16 +144,14 @@
     }
 }
 
+// MARK:- UITableViewDelegate
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [self.navigationController dismissViewControllerAnimated:YES completion:^{
-//        [self.delegate setAirport:self.airports[indexPath.row] to:self.chosenAirportType];
-//    }];
-    
     [self.delegate setAirport:self.airports[indexPath.row] to:self.chosenAirportType];
     [self.navigationController popViewControllerAnimated:YES];
-    //[self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    //[self dismissViewControllerAnimated:true completion:nil];
 }
+
+// MARK:- UISearchResultsUpdating
 
 - (BOOL)isSearchBarEmpty {
     if (self.searchController.searchBar.text) {

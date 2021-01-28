@@ -32,7 +32,7 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    [self.navigationController.navigationBar setTranslucent:YES];
+    //[self.navigationController.navigationBar setTranslucent:YES];
     
     self.navigationController.navigationBar.prefersLargeTitles = YES;
     self.title = @"Поиск";
@@ -44,8 +44,6 @@
 -(void)setUpUI {
 
     // MARK: - textFieldsStackView
-    
-    
     
     UITextField *depTextField = [[UITextField alloc] init];
     [depTextField setLeftViewMode:UITextFieldViewModeAlways];
