@@ -8,6 +8,7 @@
 #import "MainViewController.h"
 #import "ChooseAirportViewController.h"
 #import "City.h"
+#import "Airport.h"
 
 @interface MainViewController ()
 
@@ -23,8 +24,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.view.backgroundColor = [UIColor blackColor];
+    self.title = @"Поиск";
 
+    self.view.backgroundColor = [UIColor blackColor];
     [self setUpUI];
 }
 
@@ -32,16 +34,12 @@
     [super viewWillAppear:animated];
     
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    //[self.navigationController.navigationBar setTranslucent:YES];
-    
     self.navigationController.navigationBar.prefersLargeTitles = YES;
-    self.title = @"Поиск";
-    [self hideNavigationBar];
 }
 
 // MARK:- set up UI
 
--(void)setUpUI {
+- (void)setUpUI {
 
     // MARK: - textFieldsStackView
     
@@ -154,25 +152,24 @@
     mainStackView.axis = UILayoutConstraintAxisVertical;
     mainStackView.backgroundColor = [UIColor blackColor];
     mainStackView.spacing = 20;
-
+    
     [mainStackView addArrangedSubview:textFieldsStackView];
     [mainStackView addArrangedSubview:buttonsStackView];
     
     mainStackView.translatesAutoresizingMaskIntoConstraints = NO;
     [mainStackView.topAnchor constraintEqualToAnchor:self.view.topAnchor constant:self.view.frame.size.height / 3].active = YES;
     [mainStackView.centerXAnchor constraintEqualToAnchor:self.view.centerXAnchor].active = YES;
-    //[mainStackView.centerYAnchor constraintEqualToAnchor:self.view.centerYAnchor].active = YES;
     [mainStackView.widthAnchor constraintEqualToConstant:self.view.frame.size.width * 0.8].active = YES;
 }
 
 
--(void)hideNavigationBar {
+- (void)hideNavigationBar {
     [self.navigationController setToolbarHidden:YES animated:YES];
 }
 
 // MARK:- TextFIeld delegate
 
--(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     ChoosenAirportType type;
     if (textField == self.chooseDestTextField) {
         type = ChoosenAirportTypeDestination;
@@ -183,22 +180,35 @@
     ChooseAirportViewController *vc = [[ChooseAirportViewController alloc] initWithChoosenAirportType:type];
     vc.delegate = self;
     
-    //[self.navigationController presentViewController:vc animated:YES completion:nil];
-    //[self.navigationController popViewControllerAnimated:YES];
     [self.navigationController pushViewController:vc animated:YES];
     return NO;
 }
 
 // MARK:- ChoosenAirportRepresentable protocol
 
--(void)setAirport:(Airport *)airport to:(ChoosenAirportType)type {
+- (void)setAirport:(Airport *)airport with:(ChoosenAirportType)type {
     switch (type) {
         case ChoosenAirportTypeDeparture:
+            [self setAirport:airport to:self.chooseDepartTextField];
             break;
             
         case ChoosenAirportTypeDestination:
+            [self setAirport:airport to:self.chooseDestTextField];
             break;
     }
+}
+
+- (void)setAirport:(Airport *)airport to:(UITextField *)textField {
+    NSMutableString *text = [NSMutableString new];
+    [text appendString: airport.name];
+    [text appendString:@", "];
+    [text appendString:airport.cityCode];
+    
+    textField.attributedText = [[NSAttributedString alloc] initWithString:text
+                                                               attributes: @{
+                                                                   NSForegroundColorAttributeName:[UIColor blackColor],
+                                                                   NSFontAttributeName:[UIFont systemFontOfSize:18]
+                                                               }];
 }
 
 @end

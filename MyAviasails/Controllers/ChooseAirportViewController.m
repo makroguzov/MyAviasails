@@ -83,7 +83,7 @@
     searchController.searchResultsUpdater = self;
     searchController.obscuresBackgroundDuringPresentation = NO;
     searchController.searchBar.placeholder = @"search ...";
-    //searchController.searchBar.hidden = NO;
+    //searchController.searchBar.backgroundColor = [UIColor blackColor];
     
     self.searchController = searchController;
     
@@ -97,6 +97,9 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    self.tableView.rowHeight = 50;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     [self.tableView registerClass:AirportTableViewCell.class forCellReuseIdentifier:AIRPORT_CELL_REUSE_IDENTIFIER];
     
@@ -115,10 +118,6 @@
 }
 
 // MARK:- UITableViewDataSource
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
-}
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (self.isFiltering) {
@@ -147,7 +146,7 @@
 // MARK:- UITableViewDelegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.delegate setAirport:self.airports[indexPath.row] to:self.chosenAirportType];
+    [self.delegate setAirport:self.airports[indexPath.row] with:self.chosenAirportType];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

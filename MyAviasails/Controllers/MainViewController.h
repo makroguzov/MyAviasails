@@ -18,7 +18,7 @@ typedef enum {
 @protocol ChoosenAirportRepresentable <NSObject>
 
 @required
--(void)setAirport:(Airport *) airport to:(ChoosenAirportType) type;
+-(void)setAirport:(Airport *) airport with:(ChoosenAirportType) type;
 
 @end
 
