@@ -12,13 +12,13 @@
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary
 {
     if (self = [super init]) {
-        _timezone = [dictionary valueForKey:@"time_zone"];
-        _translations = [dictionary valueForKey:@"name_translations"];
-        _name = [dictionary valueForKey:@"name"];
-        _countryCode = [dictionary valueForKey:@"country_code"];
-        _cityCode = [dictionary valueForKey:@"city_code"];
-        _code = [dictionary valueForKey:@"code"];
-        _flightable = [dictionary valueForKey:@"flightable"];
+        self.timezone = [dictionary valueForKey:@"time_zone"];
+        self.translations = [dictionary valueForKey:@"name_translations"];
+        self.name = [dictionary valueForKey:@"name"];
+        self.countryCode = [dictionary valueForKey:@"country_code"];
+        self.cityCode = [dictionary valueForKey:@"city_code"];
+        self.code = [dictionary valueForKey:@"code"];
+        self.flightable = [dictionary valueForKey:@"flightable"];
         
         NSDictionary *coords = [dictionary valueForKey:@"coordinates"];
         if (coords && ![coords isEqual:[NSNull null]]) {
@@ -26,7 +26,7 @@
             NSNumber *lat = [coords valueForKey:@"lat"];
             
             if (![lon isEqual:[NSNull null]] && ![lat isEqual:[NSNull null]]) {
-                _coordinate = CLLocationCoordinate2DMake([lat doubleValue], [lon doubleValue]);
+                self.coordinate = CLLocationCoordinate2DMake([lat doubleValue], [lon doubleValue]);
             }
         }
     }

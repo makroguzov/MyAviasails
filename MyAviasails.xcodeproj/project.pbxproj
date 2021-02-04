@@ -10,6 +10,7 @@
 		713E235225B34BB4007FA37F /* ChooseAirportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 713E235125B34BB4007FA37F /* ChooseAirportViewController.m */; };
 		715E082125B35EDE0099733C /* AirportTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 715E082025B35EDE0099733C /* AirportTableViewCell.m */; };
 		715E083525B58B510099733C /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 715E083425B58B510099733C /* DataManager.m */; };
+		716C3BA725C3613A00CF8E98 /* Ticket.m in Sources */ = {isa = PBXBuildFile; fileRef = 716C3BA625C3613A00CF8E98 /* Ticket.m */; };
 		718C715725C3575900E8EC88 /* AviasalesAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 718C715625C3575900E8EC88 /* AviasalesAPIManager.m */; };
 		71A463B725AE8B78008403C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463B625AE8B78008403C1 /* AppDelegate.m */; };
 		71A463BA25AE8B78008403C1 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 71A463B925AE8B78008403C1 /* SceneDelegate.m */; };
@@ -51,6 +52,8 @@
 		715E082025B35EDE0099733C /* AirportTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AirportTableViewCell.m; sourceTree = "<group>"; };
 		715E083325B58B510099733C /* DataManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		715E083425B58B510099733C /* DataManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
+		716C3BA525C3613A00CF8E98 /* Ticket.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ticket.h; sourceTree = "<group>"; };
+		716C3BA625C3613A00CF8E98 /* Ticket.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Ticket.m; sourceTree = "<group>"; };
 		718C715525C3575900E8EC88 /* AviasalesAPIManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AviasalesAPIManager.h; sourceTree = "<group>"; };
 		718C715625C3575900E8EC88 /* AviasalesAPIManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AviasalesAPIManager.m; sourceTree = "<group>"; };
 		71A463B225AE8B78008403C1 /* MyAviasails.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyAviasails.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -125,6 +128,8 @@
 				71A463FC25AE8E93008403C1 /* Country.m */,
 				71A4640125AE8F53008403C1 /* City.h */,
 				71A4640225AE8F53008403C1 /* City.m */,
+				716C3BA525C3613A00CF8E98 /* Ticket.h */,
+				716C3BA625C3613A00CF8E98 /* Ticket.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 				71A463C825AE8B79008403C1 /* main.m in Sources */,
 				71A463FD25AE8E93008403C1 /* Country.m in Sources */,
 				715E082125B35EDE0099733C /* AirportTableViewCell.m in Sources */,
+				716C3BA725C3613A00CF8E98 /* Ticket.m in Sources */,
 				71A4640325AE8F53008403C1 /* City.m in Sources */,
 				71A463BA25AE8B78008403C1 /* SceneDelegate.m in Sources */,
 			);

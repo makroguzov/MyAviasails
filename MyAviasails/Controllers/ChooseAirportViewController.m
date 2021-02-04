@@ -83,7 +83,6 @@
     searchController.searchResultsUpdater = self;
     searchController.obscuresBackgroundDuringPresentation = NO;
     searchController.searchBar.placeholder = @"search ...";
-    //searchController.searchBar.backgroundColor = [UIColor blackColor];
     
     self.searchController = searchController;
     

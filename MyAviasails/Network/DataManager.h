@@ -6,6 +6,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 #import "Country.h"
 #import "City.h"
 #import "Airport.h"
@@ -33,6 +34,12 @@ typedef struct SearchRequest {
 
 + (instancetype)sharedInstance;
 - (void)loadData:(void (^)(void))complition;
+
+- (City *)cityForIATA:(NSString *)iata;
+
+- (Country *)getCountryBy:(NSString *)code;
+- (City *)getCityBy:(NSString *)code;
+- (Airport *)getNearestAirportFrom:(CLLocation *)location;
 
 @property (nonatomic, strong, readonly) NSArray *countries;
 @property (nonatomic, strong, readonly) NSArray *cities;

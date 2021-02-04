@@ -9,6 +9,8 @@
 #import "ChooseAirportViewController.h"
 #import "City.h"
 #import "Airport.h"
+#import "DataManager.h"
+#import "AviasalesAPIManager.h"
 
 @interface MainViewController ()
 
@@ -35,6 +37,15 @@
     
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.navigationController.navigationBar.prefersLargeTitles = YES;
+}
+
+- (void)loadData {
+    [[DataManager sharedInstance] loadData:^{
+        [[AviasalesAPIManager sharedInstance] cityForCurrentIP:^(City *city) {
+            Airport *nearestAirport = [DataManager.sharedInstance getNearestAirportFrom:[[CLLocation alloc] initWithLatitude:city.coordinate.latitude longitude:city.coordinate.longitude]];
+            [self setAirport:nearestAirport with:ChoosenAirportTypeDeparture];
+        }];
+    }];
 }
 
 // MARK:- set up UI

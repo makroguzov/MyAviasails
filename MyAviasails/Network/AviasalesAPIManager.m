@@ -6,7 +6,6 @@
 //
 
 #import "AviasalesAPIManager.h"
-#import "DataManager.h"
 
 @implementation AviasalesAPIManager
 
@@ -25,6 +24,7 @@
         [self load:[NSString stringWithFormat:@"%@%@", API_URL_CITY_FROM_IP, ipAddress] withCompletion:^(id  _Nullable result) {
             NSDictionary *json = result;
             NSString *iata = [json valueForKey:@"iata"];
+            
             if (iata) {
                 City *city = [[DataManager sharedInstance] cityForIATA:iata];
                 if (city) {
@@ -37,11 +37,6 @@
     }];
 }
 
-
-
-
-
-
 - (void)IPAddressWithCompletion:(void (^)(NSString *ipAddress))completion {
     [self load:API_URL_IP_ADDRESS withCompletion:^(id  _Nullable result) {
         NSDictionary *json = result;
@@ -50,20 +45,12 @@
 }
 
 - (void)load:(NSString *)urlString withCompletion:(void (^)(id _Nullable result))completion {
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//       [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-//    });
     [[[NSURLSession sharedSession] dataTaskWithURL:[NSURL URLWithString:urlString] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-//        });
         if (!error) {
          completion([NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil]);
         }
     }] resume] ;
 }
-
-
 
 - (void)ticketsWithRequest:(SearchRequest)request withCompletion:(void (^)(NSArray *tickets))completion {
     NSString *urlString = [NSString stringWithFormat:@"%@?%@&token=%@", API_URL_CHEAP, SearchRequestQuery(request), API_TOKEN];

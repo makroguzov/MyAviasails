@@ -6,9 +6,6 @@
 //
 
 #import "DataManager.h"
-#import "Country.h"
-#import "City.h"
-#import "Airport.h"
 
 @interface DataManager()
 
@@ -46,6 +43,7 @@
 
 - (void)loadNewData:(void (^)(void))complition {
     dispatch_async(dispatch_get_global_queue(QOS_CLASS_UTILITY, 0), ^{
+                
         NSArray *countriesJsonArray = [self arrayFromFileName:@"countries" ofType:@"json"];
         self.countriesArray = [self createObjectsFromArray:countriesJsonArray withType: DataSourceTypeCountry];
         
@@ -69,8 +67,7 @@
 }
 
 
-- (NSMutableArray *)createObjectsFromArray:(NSArray *)array withType:(DataSourceType)type
-{
+- (NSMutableArray *)createObjectsFromArray:(NSArray *)array withType:(DataSourceType)type {
     NSMutableArray *results = [NSMutableArray new];
     
     for (NSDictionary *jsonObject in array) {
@@ -91,25 +88,54 @@
     return results;
 }
 
-- (NSArray *)arrayFromFileName:(NSString *)fileName ofType:(NSString *)type
-{
+- (NSArray *)arrayFromFileName:(NSString *)fileName ofType:(NSString *)type {
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:type];
     NSData *data = [NSData dataWithContentsOfFile:path];
     return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
 }
 
-- (NSArray *)countries
-{
+- (NSArray *)countries {
     return _countriesArray;
 }
 
-- (NSArray *)cities
-{
+- (NSArray *)cities {
     return _citiesArray;
 }
 
-- (NSArray *)airports
-{
+- (NSArray *)airports {
     return _airportsArray;
 }
+
+- (Country *)getCountryBy:(NSString *)code {
+    return [self.countries filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(Country * _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+        return [evaluatedObject.code isEqual:code];
+    }]].firstObject;
+}
+
+- (City *)getCityBy:(NSString *)code {
+    return [self.cities filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(City*  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
+        return [evaluatedObject.code isEqual:code];
+    }]].firstObject;
+}
+
+- (Airport *)getNearestAirportFrom:(CLLocation *)location {
+    return [self.airports sortedArrayUsingComparator:^NSComparisonResult(Airport*  _Nonnull obj1, Airport*  _Nonnull obj2) {
+        NSNumber *dist1 = [[NSNumber alloc] initWithDouble:[[[CLLocation alloc] initWithLatitude:obj1.coordinate.latitude longitude:obj1.coordinate.longitude] distanceFromLocation:location]];
+        NSNumber *dist2 = [[NSNumber alloc] initWithDouble:[[[CLLocation alloc] initWithLatitude:obj2.coordinate.latitude longitude:obj2.coordinate.longitude] distanceFromLocation:location]];
+        return [dist1 compare:dist2];
+    }].firstObject;
+}
+
+- (City *)cityForIATA:(NSString *)iata {
+    if (iata) {
+        for (City *city in _citiesArray) {
+            if ([city.code isEqualToString:iata]) {
+                return city;
+            }
+        }
+    }
+    
+    return nil;
+}
+
 @end

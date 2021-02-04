@@ -12,10 +12,10 @@
 - (instancetype)initWithDictionary:(NSDictionary*) dictionary
 {
     if (self = [super init]) {
-        _currency = [dictionary valueForKey:@"currency"];
-        _translations = [dictionary valueForKey:@"name_translations"];
-        _name = [dictionary valueForKey:@"name"];
-        _code = [dictionary valueForKey:@"code"];
+        self.currency = [dictionary valueForKey:@"currency"];
+        self.translations = [dictionary valueForKey:@"name_translations"];
+        self.name = [dictionary valueForKey:@"name"];
+        self.code = [dictionary valueForKey:@"code"];
     }
     
     return self;
