@@ -6,15 +6,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+
+#import "ResultsPresenterTableViewController.h"
 #import "MainViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ChooseAirportViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating>
+@interface ChooseAirportViewController : UIViewController<UISearchResultsUpdating>
 
 @property (weak, nonatomic) id<ChoosenAirportRepresentable> delegate;
 
--(instancetype) initWithChoosenAirportType:(ChoosenAirportType) chousenAirportType;
+- (instancetype)initWithChoosenAirportType:(ChoosenAirportType) chousenAirportType startLoc:(City *) city;
 
 @end
 

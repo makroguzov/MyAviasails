@@ -39,7 +39,8 @@ typedef struct SearchRequest {
 
 - (Country *)getCountryBy:(NSString *)code;
 - (City *)getCityBy:(NSString *)code;
-- (Airport *)getNearestAirportFrom:(CLLocation *)location;
+
+- (City *)getNearestCityTo:(CLLocation *)location;
 
 @property (nonatomic, strong, readonly) NSArray *countries;
 @property (nonatomic, strong, readonly) NSArray *cities;

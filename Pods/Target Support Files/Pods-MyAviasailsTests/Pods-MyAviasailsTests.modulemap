@@ -1,0 +1,6 @@
+framework module Pods_MyAviasailsTests {
+  umbrella header "Pods-MyAviasailsTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

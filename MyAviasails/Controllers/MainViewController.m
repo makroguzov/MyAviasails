@@ -11,13 +11,21 @@
 #import "Airport.h"
 #import "DataManager.h"
 #import "AviasalesAPIManager.h"
+#import "LocationManager.h"
 
 @interface MainViewController ()
+
+
+@property (strong, nonatomic, nonnull) City *destination;
+@property (strong, nonatomic, nonnull) City *departure;
+@property (strong, nonatomic, nonnull) City *currentCytyLocation;
 
 @property (strong, nonatomic, nonnull) UITextField *chooseDepartTextField;
 @property (strong, nonatomic, nonnull) UITextField *chooseDestTextField;
 @property (strong, nonatomic, nonnull) UIButton *addDateButton;
 @property (strong, nonatomic, nonnull) UIButton *choosePassangersAndClassButton;
+
+@property (strong, nonatomic, nonnull) LocationManager *locationManager;
 
 @end
 
@@ -30,6 +38,7 @@
 
     self.view.backgroundColor = [UIColor blackColor];
     [self setUpUI];
+    [self loadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -40,10 +49,18 @@
 }
 
 - (void)loadData {
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.label.text = @"Загружаем данные. Определяем местоположение";
+    hud.label.numberOfLines = 2;
+    
     [[DataManager sharedInstance] loadData:^{
-        [[AviasalesAPIManager sharedInstance] cityForCurrentIP:^(City *city) {
-            Airport *nearestAirport = [DataManager.sharedInstance getNearestAirportFrom:[[CLLocation alloc] initWithLatitude:city.coordinate.latitude longitude:city.coordinate.longitude]];
-            [self setAirport:nearestAirport with:ChoosenAirportTypeDeparture];
+        self.locationManager = [[LocationManager alloc] initWithComplition:^(CLLocation * _Nonnull location) {
+            City *nearestCity = [DataManager.sharedInstance getNearestCityTo:location];
+            self.currentCytyLocation = nearestCity;
+            self.currentCytyLocation.coordinate = location.coordinate;
+
+            [self setCity:nearestCity to:ChoosenAirportTypeDeparture];
+            [hud hideAnimated:YES];
         }];
     }];
 }
@@ -173,22 +190,26 @@
     [mainStackView.widthAnchor constraintEqualToConstant:self.view.frame.size.width * 0.8].active = YES;
 }
 
-
-- (void)hideNavigationBar {
-    [self.navigationController setToolbarHidden:YES animated:YES];
-}
-
 // MARK:- TextFIeld delegate
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     ChoosenAirportType type;
+    City *startLocation;
+    
     if (textField == self.chooseDestTextField) {
         type = ChoosenAirportTypeDestination;
+        if (self.destination) {
+            startLocation = self.destination;
+        } else {
+            startLocation = self.currentCytyLocation;
+        }
     } else {
         type = ChoosenAirportTypeDeparture;
+        startLocation = self.currentCytyLocation;
     }
 
-    ChooseAirportViewController *vc = [[ChooseAirportViewController alloc] initWithChoosenAirportType:type];
+    ChooseAirportViewController *vc = [[ChooseAirportViewController alloc] initWithChoosenAirportType:type
+                                                                                            startLoc:startLocation];
     vc.delegate = self;
     
     [self.navigationController pushViewController:vc animated:YES];
@@ -197,25 +218,22 @@
 
 // MARK:- ChoosenAirportRepresentable protocol
 
-- (void)setAirport:(Airport *)airport with:(ChoosenAirportType)type {
+- (void)setCity:(City *)city to:(ChoosenAirportType)type {
     switch (type) {
         case ChoosenAirportTypeDeparture:
-            [self setAirport:airport to:self.chooseDepartTextField];
+            self.departure = city;
+            [self writeity:city to:self.chooseDepartTextField];
             break;
             
         case ChoosenAirportTypeDestination:
-            [self setAirport:airport to:self.chooseDestTextField];
+            self.destination = city;
+            [self writeity:city to:self.chooseDestTextField];
             break;
     }
 }
 
-- (void)setAirport:(Airport *)airport to:(UITextField *)textField {
-    NSMutableString *text = [NSMutableString new];
-    [text appendString: airport.name];
-    [text appendString:@", "];
-    [text appendString:airport.cityCode];
-    
-    textField.attributedText = [[NSAttributedString alloc] initWithString:text
+-(void)writeity:(City *)city to:(UITextField *)textField {
+    textField.attributedText = [[NSAttributedString alloc] initWithString:city.name
                                                                attributes: @{
                                                                    NSForegroundColorAttributeName:[UIColor blackColor],
                                                                    NSFontAttributeName:[UIFont systemFontOfSize:18]

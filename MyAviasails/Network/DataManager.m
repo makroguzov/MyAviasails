@@ -118,8 +118,9 @@
     }]].firstObject;
 }
 
-- (Airport *)getNearestAirportFrom:(CLLocation *)location {
-    return [self.airports sortedArrayUsingComparator:^NSComparisonResult(Airport*  _Nonnull obj1, Airport*  _Nonnull obj2) {
+
+- (City *)getNearestCityTo:(CLLocation *)location {
+    return [self.cities sortedArrayUsingComparator:^NSComparisonResult(City*  _Nonnull obj1, City*  _Nonnull obj2) {
         NSNumber *dist1 = [[NSNumber alloc] initWithDouble:[[[CLLocation alloc] initWithLatitude:obj1.coordinate.latitude longitude:obj1.coordinate.longitude] distanceFromLocation:location]];
         NSNumber *dist2 = [[NSNumber alloc] initWithDouble:[[[CLLocation alloc] initWithLatitude:obj2.coordinate.latitude longitude:obj2.coordinate.longitude] distanceFromLocation:location]];
         return [dist1 compare:dist2];

@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		04D94414FD926B3436BF75F6 /* Pods_MyAviasails.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0B96627FC15C21BC789608 /* Pods_MyAviasails.framework */; };
+		71121C3F25CBF15D00C15A0F /* ResultsPresenterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 71121C3E25CBF15D00C15A0F /* ResultsPresenterTableViewController.m */; };
+		71121C5325CC251B00C15A0F /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 71121C5225CC251B00C15A0F /* LocationManager.m */; };
 		713E235225B34BB4007FA37F /* ChooseAirportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 713E235125B34BB4007FA37F /* ChooseAirportViewController.m */; };
 		715E082125B35EDE0099733C /* AirportTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 715E082025B35EDE0099733C /* AirportTableViewCell.m */; };
 		715E083525B58B510099733C /* DataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 715E083425B58B510099733C /* DataManager.m */; };
@@ -26,6 +29,8 @@
 		71F633ED25AEB0EB00BC8CE3 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 71F633EA25AEB0EA00BC8CE3 /* countries.json */; };
 		71F633EE25AEB0EB00BC8CE3 /* airports.json in Resources */ = {isa = PBXBuildFile; fileRef = 71F633EB25AEB0EA00BC8CE3 /* airports.json */; };
 		71F633EF25AEB0EB00BC8CE3 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 71F633EC25AEB0EB00BC8CE3 /* cities.json */; };
+		AEA396644A1E3F4AD33D5A71 /* Pods_MyAviasails_MyAviasailsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13FBE632CF29985CF36D9C18 /* Pods_MyAviasails_MyAviasailsUITests.framework */; };
+		C38A31A55AFE2CA33875BA75 /* Pods_MyAviasailsTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B439BA56765296847DABADF5 /* Pods_MyAviasailsTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +51,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		04C987D8F07A9B680F14197E /* Pods-MyAviasails.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyAviasails.debug.xcconfig"; path = "Target Support Files/Pods-MyAviasails/Pods-MyAviasails.debug.xcconfig"; sourceTree = "<group>"; };
+		13FBE632CF29985CF36D9C18 /* Pods_MyAviasails_MyAviasailsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyAviasails_MyAviasailsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C23E583B0B09952817C4826 /* Pods-MyAviasails.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyAviasails.release.xcconfig"; path = "Target Support Files/Pods-MyAviasails/Pods-MyAviasails.release.xcconfig"; sourceTree = "<group>"; };
+		34DCA570DA60F5DA3D9A127A /* Pods-MyAviasails-MyAviasailsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyAviasails-MyAviasailsUITests.release.xcconfig"; path = "Target Support Files/Pods-MyAviasails-MyAviasailsUITests/Pods-MyAviasails-MyAviasailsUITests.release.xcconfig"; sourceTree = "<group>"; };
+		6A12820A2C9263E155E62539 /* Pods-MyAviasailsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyAviasailsTests.debug.xcconfig"; path = "Target Support Files/Pods-MyAviasailsTests/Pods-MyAviasailsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		71121C3D25CBF15D00C15A0F /* ResultsPresenterTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ResultsPresenterTableViewController.h; sourceTree = "<group>"; };
+		71121C3E25CBF15D00C15A0F /* ResultsPresenterTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ResultsPresenterTableViewController.m; sourceTree = "<group>"; };
+		71121C5125CC251B00C15A0F /* LocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		71121C5225CC251B00C15A0F /* LocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		713E235025B34BB4007FA37F /* ChooseAirportViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChooseAirportViewController.h; sourceTree = "<group>"; };
 		713E235125B34BB4007FA37F /* ChooseAirportViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChooseAirportViewController.m; sourceTree = "<group>"; };
 		715E081F25B35EDE0099733C /* AirportTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AirportTableViewCell.h; sourceTree = "<group>"; };
@@ -82,6 +96,10 @@
 		71F633EA25AEB0EA00BC8CE3 /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
 		71F633EB25AEB0EA00BC8CE3 /* airports.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = airports.json; sourceTree = "<group>"; };
 		71F633EC25AEB0EB00BC8CE3 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
+		975796E9C72C281C9F37E714 /* Pods-MyAviasails-MyAviasailsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyAviasails-MyAviasailsUITests.debug.xcconfig"; path = "Target Support Files/Pods-MyAviasails-MyAviasailsUITests/Pods-MyAviasails-MyAviasailsUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B439BA56765296847DABADF5 /* Pods_MyAviasailsTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyAviasailsTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD0B96627FC15C21BC789608 /* Pods_MyAviasails.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyAviasails.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF905D8925F645AC6AF509C3 /* Pods-MyAviasailsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyAviasailsTests.release.xcconfig"; path = "Target Support Files/Pods-MyAviasailsTests/Pods-MyAviasailsTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04D94414FD926B3436BF75F6 /* Pods_MyAviasails.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C38A31A55AFE2CA33875BA75 /* Pods_MyAviasailsTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEA396644A1E3F4AD33D5A71 /* Pods_MyAviasails_MyAviasailsUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +160,8 @@
 			children = (
 				71A463BB25AE8B78008403C1 /* MainViewController.h */,
 				71A463BC25AE8B78008403C1 /* MainViewController.m */,
+				71121C3D25CBF15D00C15A0F /* ResultsPresenterTableViewController.h */,
+				71121C3E25CBF15D00C15A0F /* ResultsPresenterTableViewController.m */,
 				713E235025B34BB4007FA37F /* ChooseAirportViewController.h */,
 				713E235125B34BB4007FA37F /* ChooseAirportViewController.m */,
 				715E081F25B35EDE0099733C /* AirportTableViewCell.h */,
@@ -154,6 +177,8 @@
 				71A463D025AE8B79008403C1 /* MyAviasailsTests */,
 				71A463DB25AE8B79008403C1 /* MyAviasailsUITests */,
 				71A463B325AE8B78008403C1 /* Products */,
+				B4F2EFD328600718BF09CE12 /* Pods */,
+				BD0013683C31680737E761EC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -200,6 +225,8 @@
 			isa = PBXGroup;
 			children = (
 				715E083225B58B320099733C /* Models */,
+				71121C5125CC251B00C15A0F /* LocationManager.h */,
+				71121C5225CC251B00C15A0F /* LocationManager.m */,
 				718C715525C3575900E8EC88 /* AviasalesAPIManager.h */,
 				718C715625C3575900E8EC88 /* AviasalesAPIManager.m */,
 				715E083325B58B510099733C /* DataManager.h */,
@@ -223,6 +250,29 @@
 			path = "Support Files";
 			sourceTree = "<group>";
 		};
+		B4F2EFD328600718BF09CE12 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				04C987D8F07A9B680F14197E /* Pods-MyAviasails.debug.xcconfig */,
+				2C23E583B0B09952817C4826 /* Pods-MyAviasails.release.xcconfig */,
+				975796E9C72C281C9F37E714 /* Pods-MyAviasails-MyAviasailsUITests.debug.xcconfig */,
+				34DCA570DA60F5DA3D9A127A /* Pods-MyAviasails-MyAviasailsUITests.release.xcconfig */,
+				6A12820A2C9263E155E62539 /* Pods-MyAviasailsTests.debug.xcconfig */,
+				EF905D8925F645AC6AF509C3 /* Pods-MyAviasailsTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BD0013683C31680737E761EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DD0B96627FC15C21BC789608 /* Pods_MyAviasails.framework */,
+				13FBE632CF29985CF36D9C18 /* Pods_MyAviasails_MyAviasailsUITests.framework */,
+				B439BA56765296847DABADF5 /* Pods_MyAviasailsTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -230,9 +280,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 71A463E125AE8B79008403C1 /* Build configuration list for PBXNativeTarget "MyAviasails" */;
 			buildPhases = (
+				D0814459860BD3CA101E95B8 /* [CP] Check Pods Manifest.lock */,
 				71A463AE25AE8B78008403C1 /* Sources */,
 				71A463AF25AE8B78008403C1 /* Frameworks */,
 				71A463B025AE8B78008403C1 /* Resources */,
+				B3C8C5DEC79E06D060439C4C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -247,6 +299,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 71A463E425AE8B79008403C1 /* Build configuration list for PBXNativeTarget "MyAviasailsTests" */;
 			buildPhases = (
+				65471DB7B0E2B27F80DE18DF /* [CP] Check Pods Manifest.lock */,
 				71A463C925AE8B79008403C1 /* Sources */,
 				71A463CA25AE8B79008403C1 /* Frameworks */,
 				71A463CB25AE8B79008403C1 /* Resources */,
@@ -265,9 +318,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 71A463E725AE8B79008403C1 /* Build configuration list for PBXNativeTarget "MyAviasailsUITests" */;
 			buildPhases = (
+				89BC2FB41E933D8C8B00EF6C /* [CP] Check Pods Manifest.lock */,
 				71A463D425AE8B79008403C1 /* Sources */,
 				71A463D525AE8B79008403C1 /* Frameworks */,
 				71A463D625AE8B79008403C1 /* Resources */,
+				17FF03C8ED3DB4D5FA5636F2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -349,6 +404,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		17FF03C8ED3DB4D5FA5636F2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyAviasails-MyAviasailsUITests/Pods-MyAviasails-MyAviasailsUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyAviasails-MyAviasailsUITests/Pods-MyAviasails-MyAviasailsUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyAviasails-MyAviasailsUITests/Pods-MyAviasails-MyAviasailsUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65471DB7B0E2B27F80DE18DF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyAviasailsTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		89BC2FB41E933D8C8B00EF6C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyAviasails-MyAviasailsUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B3C8C5DEC79E06D060439C4C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyAviasails/Pods-MyAviasails-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyAviasails/Pods-MyAviasails-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyAviasails/Pods-MyAviasails-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0814459860BD3CA101E95B8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyAviasails-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		71A463AE25AE8B78008403C1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -362,9 +520,11 @@
 				718C715725C3575900E8EC88 /* AviasalesAPIManager.m in Sources */,
 				71A463C825AE8B79008403C1 /* main.m in Sources */,
 				71A463FD25AE8E93008403C1 /* Country.m in Sources */,
+				71121C5325CC251B00C15A0F /* LocationManager.m in Sources */,
 				715E082125B35EDE0099733C /* AirportTableViewCell.m in Sources */,
 				716C3BA725C3613A00CF8E98 /* Ticket.m in Sources */,
 				71A4640325AE8F53008403C1 /* City.m in Sources */,
+				71121C3F25CBF15D00C15A0F /* ResultsPresenterTableViewController.m in Sources */,
 				71A463BA25AE8B78008403C1 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -526,6 +686,7 @@
 		};
 		71A463E225AE8B79008403C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 04C987D8F07A9B680F14197E /* Pods-MyAviasails.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -544,6 +705,7 @@
 		};
 		71A463E325AE8B79008403C1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C23E583B0B09952817C4826 /* Pods-MyAviasails.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -562,6 +724,7 @@
 		};
 		71A463E525AE8B79008403C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A12820A2C9263E155E62539 /* Pods-MyAviasailsTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -582,6 +745,7 @@
 		};
 		71A463E625AE8B79008403C1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF905D8925F645AC6AF509C3 /* Pods-MyAviasailsTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -602,6 +766,7 @@
 		};
 		71A463E825AE8B79008403C1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 975796E9C72C281C9F37E714 /* Pods-MyAviasails-MyAviasailsUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QU9ZBG8S59;
@@ -620,6 +785,7 @@
 		};
 		71A463E925AE8B79008403C1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34DCA570DA60F5DA3D9A127A /* Pods-MyAviasails-MyAviasailsUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QU9ZBG8S59;

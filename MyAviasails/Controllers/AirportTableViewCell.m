@@ -6,7 +6,7 @@
 //
 
 #import "AirportTableViewCell.h"
-#import "Airport.h"
+#import "City.h"
 
 @implementation AirportTableViewCell
 
@@ -27,18 +27,19 @@
     self.detailTextLabel.textColor = [UIColor whiteColor];
 }
 
-- (void)setUpWithAirport:(Airport *)airport {
-    self.textLabel.text = [[airport.name stringByAppendingString:@", "] stringByAppendingString:airport.countryCode];
+- (void)setUpWithCity:(City *)city {
+    self.textLabel.text = city.name;
 
-    UILabel *airportCodeLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    airportCodeLable.attributedText = [[NSAttributedString alloc] initWithString:airport.code
+    UILabel *cityCodeLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    cityCodeLable.attributedText = [[NSAttributedString alloc] initWithString:city.code
                                                                attributes: @{
                                                                    NSForegroundColorAttributeName:[UIColor whiteColor],
                                                                    NSFontAttributeName:[UIFont systemFontOfSize:20]
                                                                }];
 
     [self setAccessoryType:UITableViewCellAccessoryNone];
-    [self setAccessoryView:airportCodeLable];
+    [self setAccessoryView:cityCodeLable];
+    [self.accessoryView sizeToFit];
 }
 
 @end

@@ -9,11 +9,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@class Airport;
+@class City;
 
 @interface AirportTableViewCell : UITableViewCell
 
--(void)setUpWithAirport:(Airport *) airport;
+- (void)setUpWithCity:(City *)city;
 
 @end
 

@@ -6,8 +6,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
-@class Airport;
+#import "MBProgressHUD.h"
+
+@class City;
 
 typedef enum {
     ChoosenAirportTypeDestination,
@@ -18,7 +21,7 @@ typedef enum {
 @protocol ChoosenAirportRepresentable <NSObject>
 
 @required
--(void)setAirport:(Airport *) airport with:(ChoosenAirportType) type;
+- (void)setCity:(City *)city to:(ChoosenAirportType)type;
 
 @end
 

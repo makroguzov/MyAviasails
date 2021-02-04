@@ -12,26 +12,22 @@
 #import "DataManager.h"
 
 
-#define AIRPORT_CELL_REUSE_IDENTIFIER @"airportCellReuseIdentifier"
 
 @interface ChooseAirportViewController ()
 
-@property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *airports;
 @property (nonatomic) ChoosenAirportType chosenAirportType;
-
-@property (nonatomic, strong) NSArray *searchData;
-@property (nonatomic, strong) UISearchController *searchController;
-
+@property (nonatomic) City *currentLocation;
+@property (strong, nonatomic) MKMapView *mapView;
 @end
 
 @implementation ChooseAirportViewController
 
 
-- (instancetype) initWithChoosenAirportType:(ChoosenAirportType) chousenAirportType {
+- (instancetype) initWithChoosenAirportType:(ChoosenAirportType) chousenAirportType startLoc:(City *) city {
     self = [super init];
     if (self) {
         self.chosenAirportType = chousenAirportType;
+        self.currentLocation = city;
     }
     
     return self;
@@ -43,23 +39,63 @@
     [super viewDidLoad];
         
     [self setUpUI];
-    [self loadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
     self.view.backgroundColor = [UIColor blackColor];
-    self.tableView.backgroundColor = [UIColor blackColor];
     self.navigationController.navigationBar.prefersLargeTitles = NO;
+    [self addCurentLocation];
+    
+    if (self.chosenAirportType == ChoosenAirportTypeDestination) {
+        [self addAnnotations:DataManager.sharedInstance.cities];
+    }
 }
 
 // MARK:- Set up UI
 
 - (void)setUpUI {
-    [self setUpTableView];
+    [self setUpMap];
     [self setUpViewTitle];
     [self setUpSerchController];
+}
+
+- (void)setUpMap {
+    CGRect frame = CGRectMake(0, 0,
+                              [UIScreen mainScreen].bounds.size.width,
+                              [UIScreen mainScreen].bounds.size.height);
+    
+    self.mapView = [[MKMapView alloc] initWithFrame: frame];
+    
+    [self.mapView setRegion:[self getRegion] animated: YES];
+    [self.view addSubview:self.mapView];
+}
+
+- (MKCoordinateRegion)getRegion {
+    if (self.chosenAirportType == ChoosenAirportTypeDestination) {
+        return MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, 1000000, 100000);
+    } else {
+        return MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, 10000, 10000);
+    }
+}
+
+- (void)addAnnotations:(NSArray *)cities {
+    for (City *city in cities) {
+        if (city.code != self.currentLocation.code) {
+            MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+            annotation.title = city.name;
+            annotation.coordinate = city.coordinate;
+            [self.mapView addAnnotation:annotation];
+        }
+    }
+}
+
+- (void)addCurentLocation {
+    MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+    annotation.title = self.currentLocation.name;
+    annotation.coordinate = self.currentLocation.coordinate;
+    [self.mapView addAnnotation:annotation];
 }
 
 - (void)setUpViewTitle {
@@ -79,88 +115,27 @@
 }
 
 - (void)setUpSerchController {
-    UISearchController *searchController = [[UISearchController alloc] init];
+    UISearchController *searchController = [[UISearchController alloc]
+                                            initWithSearchResultsController:[ResultsPresenterTableViewController new]];
     searchController.searchResultsUpdater = self;
-    searchController.obscuresBackgroundDuringPresentation = NO;
     searchController.searchBar.placeholder = @"search ...";
-    
-    self.searchController = searchController;
-    
+        
     self.navigationItem.searchController = searchController;
     self.navigationItem.hidesSearchBarWhenScrolling = NO;
-    self.definesPresentationContext = YES;
-}
-
-- (void)setUpTableView {
-    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
-    
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    
-    self.tableView.rowHeight = 50;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
-    [self.tableView registerClass:AirportTableViewCell.class forCellReuseIdentifier:AIRPORT_CELL_REUSE_IDENTIFIER];
-    
-    [self.view addSubview:self.tableView];
-}
-
-// MARK:- Network
-
-- (void)loadData {
-    [DataManager.sharedInstance loadData:^{
-        NSArray *airports = [DataManager.sharedInstance airports];
-        self.airports = [NSMutableArray arrayWithArray:airports];
-        [self.tableView reloadData];
-    }];
-    
-}
-
-// MARK:- UITableViewDataSource
-
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (self.isFiltering) {
-        return self.searchData.count;
-    } else {
-        return [self.airports count];
-    }
-}
-
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    AirportTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AIRPORT_CELL_REUSE_IDENTIFIER];
-    if (self != nil) {
-        
-        if (self.isFiltering) {
-            [cell setUpWithAirport:self.searchData[indexPath.row]];
-        } else{
-            [cell setUpWithAirport:self.airports[indexPath.row]];
-        }
-
-        return cell;
-    } else {
-        return [[UITableViewCell alloc] init];
-    }
-}
-
-// MARK:- UITableViewDelegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.delegate setAirport:self.airports[indexPath.row] with:self.chosenAirportType];
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 // MARK:- UISearchResultsUpdating
 
 - (BOOL)isSearchBarEmpty {
-    if (self.searchController.searchBar.text) {
+    if (self.navigationItem.searchController.searchBar.text) {
         return NO;
     } else {
-        return [self.searchController.searchBar.text compare:@""];
+        return [self.navigationItem.searchController.searchBar.text compare:@""];
     }
 }
 
 - (BOOL)isFiltering {
-    return self.searchController.isActive && !self.isSearchBarEmpty;
+    return self.navigationItem.searchController.isActive && !self.isSearchBarEmpty;
   }
 
 - (void)updateSearchResultsForSearchController:(nonnull UISearchController *)searchController {
@@ -169,12 +144,13 @@
 }
 
 - (void)filterContentForSearchText:(NSString *)searchText {
-    NSPredicate *predicate = [NSPredicate predicateWithBlock:^BOOL(Airport* evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-        return [evaluatedObject.name.lowercaseString containsString:searchText.lowercaseString] ;
-    }];
-    
-    self.searchData = [self.airports filteredArrayUsingPredicate:predicate];
-    [self.tableView reloadData];
+    NSArray *cities = DataManager.sharedInstance.cities;
+    NSArray *results = [cities filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:
+                                                                  ^BOOL(City* city, NSDictionary<NSString *,id> * _Nullable bindings) {
+        return [city.name.lowercaseString containsString:searchText.lowercaseString] ;
+    }]];
+    ResultsPresenterTableViewController *resultsPresenter = (ResultsPresenterTableViewController*) self.navigationItem.searchController.searchResultsController;
+    [resultsPresenter updateWith:results];
 }
 
 @end
