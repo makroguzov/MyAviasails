@@ -6,27 +6,31 @@
 //
 
 #import "ChooseAirportViewController.h"
-#import "MainViewController.h"
-#import "AirportTableViewCell.h"
 #import "Airport.h"
+#import "MapPrice.h"
+
+#import "AviasalesAPIManager.h"
 #import "DataManager.h"
-
-
 
 @interface ChooseAirportViewController ()
 
-@property (nonatomic) ChoosenAirportType chosenAirportType;
+@property (nonatomic) LocationType locationType;
 @property (nonatomic) City *currentLocation;
 @property (strong, nonatomic) MKMapView *mapView;
+
 @end
 
 @implementation ChooseAirportViewController
 
+- (UISegmentedControl *)segmentControl {
+    return (UISegmentedControl *) self.navigationItem.titleView;
+}
 
-- (instancetype) initWithChoosenAirportType:(ChoosenAirportType) chousenAirportType startLoc:(City *) city {
+
+- (instancetype) initWithChoosenAirportType:(LocationType)chousenAirportType startLoc:(City *) city {
     self = [super init];
     if (self) {
-        self.chosenAirportType = chousenAirportType;
+        self.locationType = chousenAirportType;
         self.currentLocation = city;
     }
     
@@ -45,12 +49,18 @@
     [super viewWillAppear:YES];
     
     self.view.backgroundColor = [UIColor blackColor];
-    self.navigationController.navigationBar.prefersLargeTitles = NO;
     [self addCurentLocation];
     
-    if (self.chosenAirportType == ChoosenAirportTypeDestination) {
-        [self addAnnotations:DataManager.sharedInstance.cities];
+    if (self.locationType == LocationTypeDestination) {
+        [self addMapPrices];
+    } else if (self.locationType == LocationTypeDeparture) {
+        [self addCities];
     }
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.mapView removeAnnotations:self.mapView.annotations];
 }
 
 // MARK:- Set up UI
@@ -67,27 +77,58 @@
                               [UIScreen mainScreen].bounds.size.height);
     
     self.mapView = [[MKMapView alloc] initWithFrame: frame];
+    self.mapView.delegate = self;
     
     [self.mapView setRegion:[self getRegion] animated: YES];
     [self.view addSubview:self.mapView];
 }
 
 - (MKCoordinateRegion)getRegion {
-    if (self.chosenAirportType == ChoosenAirportTypeDestination) {
+    if (self.locationType == LocationTypeDestination) {
         return MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, 1000000, 100000);
     } else {
         return MKCoordinateRegionMakeWithDistance(self.currentLocation.coordinate, 10000, 10000);
     }
 }
 
-- (void)addAnnotations:(NSArray *)cities {
-    for (City *city in cities) {
-        if (city.code != self.currentLocation.code) {
-            MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
-            annotation.title = city.name;
-            annotation.coordinate = city.coordinate;
-            [self.mapView addAnnotation:annotation];
+- (void)addCities {
+    for (City *city in DataManager.sharedInstance.cities) {
+        NSDictionary *cityDict = @{@"city": city};
+        [self addAnnotation:cityDict];
+    }
+}
+
+- (void)addMapPrices {
+    [[AviasalesAPIManager sharedInstance] mapPricesFor:self.currentLocation withCompletion:^(NSArray *prices) {
+        for (MapPrice *mapPrice in prices) {
+            if (!mapPrice.destination) {
+                continue;
+            }
+            
+            NSMutableDictionary *annotationDict = [NSMutableDictionary dictionaryWithDictionary:@{@"city": mapPrice.destination}];
+            if (mapPrice.value) {
+                [annotationDict setObject:[NSString stringWithFormat:@"%ld", mapPrice.value] forKey:@"price"];
+            }
+
+            [self addAnnotation:annotationDict];
         }
+    }];
+}
+
+- (void)addAnnotation:(NSDictionary*) element {
+    City *city = [element objectForKey:@"city"];
+    NSString *price = [element objectForKey:@"price"];
+        
+    if ( city && city.code != self.currentLocation.code) {
+        MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+        annotation.title = city.name;
+        annotation.coordinate = city.coordinate;
+            
+        if (price) {
+            annotation.subtitle = [NSString stringWithFormat:@"%@ руб.", price];
+        }
+        
+        [self.mapView addAnnotation:annotation];
     }
 }
 
@@ -99,13 +140,15 @@
 }
 
 - (void)setUpViewTitle {
-    switch (self.chosenAirportType) {
-        case ChoosenAirportTypeDestination:
+    switch (self.locationType) {
+        case LocationTypeDestination:
             self.title = @"Куда";
             break;
             
-        case ChoosenAirportTypeDeparture:
+        case LocationTypeDeparture:
             self.title = @"Откуда";
+            break;
+        case LocationTypeNone:
             break;
     }
     
@@ -115,13 +158,50 @@
 }
 
 - (void)setUpSerchController {
+    
+    ResultsPresenterTableViewController *presenter = [[ResultsPresenterTableViewController alloc]
+                                                      initWithDelegate:self andNavigationController:self.navigationController];
+    
     UISearchController *searchController = [[UISearchController alloc]
-                                            initWithSearchResultsController:[ResultsPresenterTableViewController new]];
+                                            initWithSearchResultsController:presenter];
     searchController.searchResultsUpdater = self;
     searchController.searchBar.placeholder = @"search ...";
         
     self.navigationItem.searchController = searchController;
-    self.navigationItem.hidesSearchBarWhenScrolling = NO;
+    
+    
+    
+    self.navigationItem.titleView = [[UISegmentedControl alloc] initWithItems:@[@"Города", @"Аэропорты"]];
+    self.segmentControl.tintColor = [UIColor whiteColor];
+    self.segmentControl.selectedSegmentIndex = 0;
+}
+
+// MARK:- MKMapViewDelegate
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation {
+    static NSString *identifier = @"MarkerIdentifier";
+    
+    MKMarkerAnnotationView *annotationView = (MKMarkerAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:identifier];
+    if (!annotationView) {
+        annotationView = [[MKMarkerAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+        
+        annotationView.canShowCallout = YES;
+        annotationView.calloutOffset = CGPointMake(-5.0, 5.0);
+        
+        UIButton *accessoryView = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        annotationView.rightCalloutAccessoryView = accessoryView;
+    }
+    
+    annotationView.annotation = annotation;
+    return annotationView;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+    City *selectedCity = [DataManager.sharedInstance getNearestCityTo:[[CLLocation alloc]
+                                                                       initWithLatitude:view.annotation.coordinate.latitude
+                                                                       longitude:view.annotation.coordinate.longitude]];
+    [self setCity:selectedCity to:LocationTypeNone];
+    [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 // MARK:- UISearchResultsUpdating
@@ -144,13 +224,37 @@
 }
 
 - (void)filterContentForSearchText:(NSString *)searchText {
-    NSArray *cities = DataManager.sharedInstance.cities;
-    NSArray *results = [cities filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:
-                                                                  ^BOOL(City* city, NSDictionary<NSString *,id> * _Nullable bindings) {
-        return [city.name.lowercaseString containsString:searchText.lowercaseString] ;
-    }]];
     ResultsPresenterTableViewController *resultsPresenter = (ResultsPresenterTableViewController*) self.navigationItem.searchController.searchResultsController;
-    [resultsPresenter updateWith:results];
+    [resultsPresenter updateWith:[self getFilteredResultsWith:searchText]];
+}
+
+- (NSArray *)getFilteredResultsWith:(NSString *)searchText {
+    NSArray *results;
+    
+    switch (self.segmentControl.selectedSegmentIndex) {
+        case 0: {
+            NSArray *cities = DataManager.sharedInstance.cities;
+            results = [cities filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:
+                                                                          ^BOOL(City* city, NSDictionary<NSString *,id> * _Nullable bindings) {
+                return [city.name.lowercaseString containsString:searchText.lowercaseString] ;
+            }]];
+            break;
+        }
+        case 1: {
+            NSArray *airports = DataManager.sharedInstance.airports;
+            results = [airports filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:
+                                                                          ^BOOL(Airport* airport, NSDictionary<NSString *,id> * _Nullable bindings) {
+                return [airport.name.lowercaseString containsString:searchText.lowercaseString] ;
+            }]];
+            break;
+        }
+    }
+    return results;
+}
+
+// MARK:- ChoosenCityRepresentable
+- (void)setCity:(City *)city to:(LocationType)type {
+    [self.delegate setCity:city to:self.locationType];
 }
 
 @end

@@ -37,8 +37,8 @@ typedef struct SearchRequest {
 
 - (City *)cityForIATA:(NSString *)iata;
 
-- (Country *)getCountryBy:(NSString *)code;
-- (City *)getCityBy:(NSString *)code;
+- (Country *)getCountryByCode:(NSString *)code;
+- (City *)getCityByCode:(NSString *)code;
 
 - (City *)getNearestCityTo:(CLLocation *)location;
 

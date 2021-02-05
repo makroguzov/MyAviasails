@@ -8,15 +8,18 @@
 #import <UIKit/UIKit.h>
 
 #import "AirportTableViewCell.h"
-
+#import "ChooseAirportViewController.h"
 
 #define AIRPORT_CELL_REUSE_IDENTIFIER @"airportCellReuseIdentifier"
 
-
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ResultsPresenterTableViewController : UITableViewController
 
+@protocol ChoosenCityRepresentable;
+
+@interface ResultsPresenterTableViewController : UIViewController<UITableViewDelegate, UITableViewDataSource>
+
+- (instancetype)initWithDelegate:(id<ChoosenCityRepresentable>)delegate andNavigationController:(UINavigationController *)navController;
 - (void)updateWith:(NSArray *)results;
 
 @end

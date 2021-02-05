@@ -7,6 +7,7 @@
 
 #import "AirportTableViewCell.h"
 #import "City.h"
+#import "DataManager.h"
 
 @implementation AirportTableViewCell
 
@@ -29,6 +30,10 @@
 
 - (void)setUpWithCity:(City *)city {
     self.textLabel.text = city.name;
+    
+    Country *currentCountry = [DataManager.sharedInstance getCountryByCode:city.countryCode];
+    self.detailTextLabel.text = currentCountry.name;
+    
 
     UILabel *cityCodeLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
     cityCodeLable.attributedText = [[NSAttributedString alloc] initWithString:city.code

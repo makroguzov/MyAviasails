@@ -106,13 +106,13 @@
     return _airportsArray;
 }
 
-- (Country *)getCountryBy:(NSString *)code {
+- (Country *)getCountryByCode:(NSString *)code {
     return [self.countries filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(Country * _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
         return [evaluatedObject.code isEqual:code];
     }]].firstObject;
 }
 
-- (City *)getCityBy:(NSString *)code {
+- (City *)getCityByCode:(NSString *)code {
     return [self.cities filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(City*  _Nullable evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
         return [evaluatedObject.code isEqual:code];
     }]].firstObject;

@@ -12,22 +12,20 @@
 
 @class City;
 
-typedef enum {
-    ChoosenAirportTypeDestination,
-    ChoosenAirportTypeDeparture
-    
-} ChoosenAirportType;
+typedef NS_ENUM(NSInteger, LocationType) {
+    LocationTypeDestination,
+    LocationTypeDeparture,
+    LocationTypeNone
+};
 
-@protocol ChoosenAirportRepresentable <NSObject>
+@protocol ChoosenCityRepresentable <NSObject>
 
 @required
-- (void)setCity:(City *)city to:(ChoosenAirportType)type;
+- (void)setCity:(City *)city to:(LocationType)type;
 
 @end
 
-
-
-@interface MainViewController: UIViewController<UITextFieldDelegate, ChoosenAirportRepresentable>
+@interface MainViewController: UIViewController<UITextFieldDelegate, ChoosenCityRepresentable>
 
 @end
 
